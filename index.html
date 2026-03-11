@@ -78,7 +78,7 @@
             border-bottom: 1px solid var(--glass-border); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
         }
         .header-right { display: flex; align-items: center; gap: 15px; }
-        .site-title { color: var(--silver-light); font-size: 1rem; font-weight: 700; white-space: nowrap; text-shadow: 0 0 10px rgba(163, 184, 204, 0.3); }
+        .site-title { color: var(--silver-light); font-size: 0.9rem; font-weight: 700; white-space: nowrap; text-shadow: 0 0 10px rgba(163, 184, 204, 0.3); }
         .menu-btn { color: var(--silver-primary); font-size: 1.5rem; cursor: pointer; background: none; border: none; transition: 0.3s; }
         .menu-btn:hover { transform: scale(1.1); color: var(--blue-glow); }
         .lang-btn {
@@ -166,24 +166,27 @@
 
         /* ================= تواصل معنا والخريطة ================= */
         .contact-info { text-align: center; margin-bottom: 40px; padding: 0 10px; }
-        .contact-info p { font-size: 1rem; margin-bottom: 15px; word-wrap: break-word; }
+        .contact-info p { font-size: 0.95rem; margin-bottom: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         html[lang="ar"] .contact-info i { margin-left: 10px; color: var(--silver-primary); }
         html[lang="en"] .contact-info i { margin-right: 10px; color: var(--silver-primary); }
         
         .map-container { position: relative; border-radius: 20px; overflow: hidden; border: 2px solid var(--glass-border); height: 450px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .map-container iframe { width: 100% !important; height: 100% !important; border: none; filter: contrast(1.1) opacity(0.9); }
         
-        .map-overlay-wrapper { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; pointer-events: none; z-index: 10; }
-        .map-pin-icon { color: #e74c3c; font-size: 2.5rem; margin-bottom: 8px; animation: bouncePin 1.2s infinite cubic-bezier(0.28, 0.84, 0.42, 1); filter: drop-shadow(0 5px 5px rgba(0,0,0,0.7)); }
+        .map-pin-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; z-index: 10; display: flex; flex-direction: column; align-items: center; }
+        .map-pin-icon { color: #e74c3c; font-size: 2.5rem; animation: bouncePin 1.2s infinite cubic-bezier(0.28, 0.84, 0.42, 1); filter: drop-shadow(0 5px 5px rgba(0,0,0,0.7)); }
         @keyframes bouncePin { 0% { transform: translateY(0) scaleY(0.9); } 50% { transform: translateY(-15px) scaleY(1.05); } 100% { transform: translateY(0) scaleY(0.9); } }
         
-        /* تصميم النص أسفل الدبوس */
-        .map-overlay { 
+        /* تصميم النص أعلى يمين الخريطة */
+        .map-text-overlay { 
+            position: absolute; top: 15px;
             background: rgba(8, 12, 17, 0.95); backdrop-filter: blur(5px);
-            color: var(--silver-light); padding: 8px 15px; border-radius: 12px; font-weight: bold; 
-            border: 1px solid var(--glass-border); font-size: 0.85rem; white-space: nowrap;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5); letter-spacing: 0.5px;
+            color: var(--silver-light); padding: 5px 10px; border-radius: 8px; font-weight: bold; 
+            border: 1px solid var(--glass-border); font-size: 0.7rem; white-space: nowrap;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5); letter-spacing: 0.5px; z-index: 10; pointer-events: none;
         }
+        html[lang="ar"] .map-text-overlay { right: 15px; }
+        html[lang="en"] .map-text-overlay { left: 15px; }
 
         /* ================= البار السفلي ================= */
         .bottom-nav {
@@ -218,7 +221,7 @@
 
         /* ================= التذييل ================= */
         footer { text-align: center; padding: 50px 15px 100px; background-color: #05080b; border-top: 1px solid var(--glass-border); }
-        .copyright { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px; }
+        .copyright { color: var(--text-muted); font-size: 0.65rem; margin-bottom: 20px; display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 6px; white-space: nowrap; }
         .designer-badge, .designer-badge-loader { display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--glass-border); padding: 8px 18px; border-radius: 30px; text-decoration: none; background: linear-gradient(145deg, #111a24, #080c11); transition: 0.3s; text-align: center; max-width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         .designer-badge span, .designer-badge-loader span { color: var(--silver-primary); font-weight: bold; font-size: 0.75rem; white-space: normal; letter-spacing: 0.5px; }
         .designer-badge:hover { background: var(--silver-primary); transform: translateY(-3px); }
@@ -237,7 +240,7 @@
             .bottom-nav { width: 95%; bottom: 10px; }
             .floating-action-menu { bottom: 85px; }
             .float-btn { width: 42px; height: 42px; font-size: 1.2rem; }
-            header .site-title { font-size: 0.85rem; }
+            header .site-title { font-size: 0.75rem; }
         }
     </style>
 </head>
@@ -249,7 +252,7 @@
                 <img src="https://imgg.io/images/2026/03/11/30891943034b97dc039f7839d34fc0d3.png" alt="Logo">
             </div>
             <p class="loading-text">
-                <span class="ar">جاري تجهيز الموقع</span><span class="en">Loading Website</span><span class="dots"></span>
+                <span class="ar">جاري تحميل الموقع</span><span class="en">Loading Website</span><span class="dots"></span>
             </p>
         </div>
         <div class="loader-footer">
@@ -291,7 +294,7 @@
     </section>
 
     <section id="services">
-        <h2 class="section-title reveal"><span class="ar">خدماتنا المتميزة</span><span class="en">Premium Services</span></h2>
+        <h2 class="section-title reveal"><span class="ar">خدماتنا المميزة</span><span class="en">Premium Services</span></h2>
         <div class="grid-container">
             <div class="service-card reveal">
                 <div class="icon-3d-wrapper"><i class="fas fa-border-all"></i></div>
@@ -400,19 +403,21 @@
     <section id="contact">
         <h2 class="section-title reveal"><span class="ar">تواصل معنا</span><span class="en">Contact Us</span></h2>
         <div class="contact-info reveal">
-            <p><i class="fas fa-map-marker-alt"></i> <span class="ar">العنوان: </span><span class="en">Address: </span><span style="color:var(--text-light);">7093 براهيم الهاوسي ، العارض، الرياض</span></p>
-            <p><i class="fas fa-phone"></i> <span class="ar">رقم التواصل: </span><span class="en">Phone: </span><a href="tel:0575516207" style="color:var(--text-light); text-decoration:none; direction:ltr; display:inline-block;">0575516207</a></p>
-            <p><i class="fas fa-envelope"></i> <span class="ar">البريد الإلكتروني: </span><span class="en">Email: </span><a href="mailto:info@abdulahsalihdesign.com" style="color:var(--text-light); text-decoration:none;">info@abdulahsalihdesign.com</a></p>
+            <p style="font-size: 0.85rem; white-space: nowrap;"><i class="fas fa-map-marker-alt"></i> <span class="ar">العنوان: </span><span class="en">Address: </span><span style="color:var(--text-light);">7093 براهيم الهاوسي ، العارض، الرياض</span></p>
+            <p style="font-size: 0.85rem; white-space: nowrap;"><i class="fas fa-phone"></i> <span class="ar">رقم التواصل: </span><span class="en">Phone: </span><a href="tel:0575516207" style="color:var(--text-light); text-decoration:none; direction:ltr; display:inline-block;">0575516207</a></p>
+            <p style="font-size: 0.85rem; white-space: nowrap;"><i class="fas fa-envelope"></i> <span class="ar">البريد الإلكتروني: </span><span class="en">Email: </span><a href="mailto:info@abdulahsalihdesign.com" style="color:var(--text-light); text-decoration:none;">info@abdulahsalihdesign.com</a></p>
         </div>
         
         <div class="map-container reveal">
             <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2528.416663602861!2d46.62076814576155!3d24.878171035362346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDUyJzQwLjIiTiA0NsKwMzcnMTAuOSJF!5e1!3m2!1sar!2ssa!4v1773192434598!5m2!1sar!2ssa" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            <div class="map-overlay-wrapper">
+            
+            <div class="map-pin-center">
                 <i class="fas fa-map-marker-alt map-pin-icon"></i>
-                <div class="map-overlay">
-                    <span class="ar">مؤسسة عبدالله صالح لأعمال الالمونيوم والزجاج</span>
-                    <span class="en">Abdullah Saleh Aluminum & Glass Foundation</span>
-                </div>
+            </div>
+            
+            <div class="map-text-overlay">
+                <span class="ar">مؤسسة عبدالله صالح لأعمال الالمونيوم والزجاج</span>
+                <span class="en">Abdullah Saleh Aluminum & Glass Foundation</span>
             </div>
         </div>
     </section>
@@ -431,9 +436,9 @@
 
     <footer>
         <div class="copyright">
-            <i class="fas fa-copyright"></i>
-            <span class="ar">جميع الحقوق محفوظة لدى : مؤسسة عبدالله صالح لأعمال الالمونيوم والزجاج 2026</span>
-            <span class="en">All rights reserved to Abdullah Saleh Aluminum & Glass 2026</span>
+            <i class="fas fa-copyright"></i> 
+            <span class="ar">جميع الحقوق محفوظة لدى : مؤسسة عبدالله صالح لأعمال الالمونيوم والزجاج 2027</span>
+            <span class="en">All rights reserved to Abdullah Saleh Aluminum & Glass 2027</span>
         </div>
         
         <a href="https://wa.me/966547194788" target="_blank" class="designer-badge" rel="noopener noreferrer">
