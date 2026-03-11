@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alwaleed1215.github.io/Abdulah-salih-desgin/sitemap.xml
